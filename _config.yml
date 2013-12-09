@@ -2,7 +2,7 @@
 # see http://jekyllrb.com/docs/configuration/
 
 # set base url, according to the tips on http://jekyllrb.com/docs/github-pages/
-baseurl: '/copper-engine-website'
+baseurl: ''
 
 # Jekyll excludes dot-files such as .gitignore oder .idea by default,
 # but we need to exclude some more files

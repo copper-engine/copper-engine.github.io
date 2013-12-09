@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="COPPER - a high performance workflow engine running on the JVM with workflows written in Java"/>
+    <meta name="keywords" content="Copper, Java, JVM, workflow, high performance, workflow engine, BPEL, BPMN, persistence, JDK"/>
+    <meta name="author" content="SCOOP Software GmbH"/>
+
+    <title>{{ page.title }}</title>
+
+    <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico">
+    <link rel="icon" href="{{ site.baseurl }}/favicon.ico">
+
+    <!-- Bootstrap core CSS; TODO: change to css/bootstrap.min.css and css/bootstrap-theme.css before golive -->
+    <link href="{{ site.baseurl }}/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="{{ site.baseurl }}/css/copper.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/syntax.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!-- GitHub ribbon -->
+<a class="hidden-xs" href="https://github.com/copper-engine/copper-engine"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 2000" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+<!-- Wrap all page content here -->
+<div id="wrap">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="logo" href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/logo.png" alt="[logo]" width="153" height="46"/></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li {% if page.tabname == 'home' %}class="active"{% endif %}><a href="{{ site.baseurl }}/">Home</a></li>
+                    <li {% if page.tabname == 'about' %}class="active"{% endif %}><a href="{{ site.baseurl }}/about/">About</a></li>
+                    <li {% if page.tabname == 'features' %}class="active"{% endif %}><a href="{{ site.baseurl }}/features/">Features</a></li>
+                    <li {% if page.tabname == 'architecture' %}class="active"{% endif %}><a href="{{ site.baseurl }}/architecture/">How it works</a></li>
+                    <li {% if page.tabname == 'downloads' %}class="active"{% endif %}><a href="{{ site.baseurl }}/downloads/">Downloads</a></li>
+                    <li {% if page.tabname == 'support' %}class="active"{% endif %}><a href="{{ site.baseurl }}/support/">Support</a></li>
+                    <li {% if page.tabname == 'contact' %}class="active"{% endif %}><a href="{{ site.baseurl }}/contact/">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin page content -->
+    {{ content }}
+    <!-- End page content -->
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="text-muted credit">&copy; 2013 - Copper Engine Project Team - COPPER, the High Performance Java Workflow Engine &nbsp;&nbsp;&nbsp; <a href="mailto:contact@copper-engine.org"><span class="glyphicon glyphicon-envelope"></span> contact@copper-engine.org</a></p>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript; placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,86 @@
+---
+layout: default
+title: COPPER - How it works
+tabname: architecture
+---
+
+    <div class="container">
+        <div class="page-header">
+            <h1>How COPPER works</h1>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#components" data-toggle="tab">Components</a></li>
+            <li><a href="#transient-workflows" data-toggle="tab">Transient workflows</a></li>
+            <li><a href="#persistent-workflows" data-toggle="tab">Persistent workflows</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="components">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h3>COPPER Components</h3>
+                        <h4>Processing Engine</h4>
+                        <ul>
+                            <li>Main entity in the COPPER architecture that executes workflow instances</li>
+                            <li>Runs in a single JVM process</li>
+                            <li>Supports transient and persistent workflows</li>
+                        </ul>
+                        <h4>Workflow Repository</h4>
+                        <ul>
+                            <li>Encapsulates the storage and handling of workflow definitions</li>
+                            <li>Reads workflow definitions from the file system</li>
+                            <li>Hot Deployment: Observes file system for modified files</li>
+                        </ul>
+					    <h4>Database Layer</h4>
+                        <ul>
+                            <li>Decouples COPPER core components from the database</li>
+                            <li>Encapsulates the access to persistent workflow instances and queues</li>
+                            <li>Enables implementation of customised database layers, e.g. with application-specific optimisation or for yet unsupported DBMS</li>
+                        </ul>
+                        <h4>Audit Trail</h4>
+                        <ul>
+                            <li>Implements simple and generic audit trail</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-7">
+                        <img src="{{ site.baseurl}}/images/architecture.png" width="600" height="467" alt="COPPER architectural diagram" style="margin-top: 12px; margin-bottom: 12px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="transient-workflows">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h3>Transient workflows</h3>
+                        <p>Transient workflows are often used for processing read-only requests or in cases where it is sufficient for the workflow processes to reside in the system main memory.</p>
+                    </div>
+                    <div class="col-md-7">
+                        <img src="{{ site.baseurl}}/images/workflows-transient.png" width="600" height="418" alt="COPPER architectural diagram about transient workflows" style="margin-top: 12px; margin-bottom: 12px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="persistent-workflows">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h3>Persistent Workflows</h3>
+                        <p>Persistent workflows are stored in the database. They are typically used in the following situations:</p>
+                        <h4>Long-running Tasks</h4>
+                        <p>Workflow instances exist over a longer time period such as days, weeks, or even months. In such cases,
+                            the workflow instances must survive the starting and stopping of the application.</p>
+                        <h4>Crash Recovery</h4>
+                        <p>In case of a crash recovery, the affected workflow instances must be restored. To enable this, so-called checkpoints
+                            are written to the database.</p>
+                        <h4>High Availability/ Load Distribution</h4>
+                        <p>COPPER runs in a distributed environment. Multiple copper engines, running on different nodes, are then coupled to a cluster.
+                            This offers high availability, load distribution and automatic failover in case that one or more nodes should crash.
+                            Please note that this feature requires a high availability database system, e.g. Oracle RAC.</p>
+                    </div>
+                    <div class="col-md-7">
+                        <img src="{{ site.baseurl}}/images/architecture.png" width="600" height="467" alt="COPPER architectural diagram" style="margin-top: 12px; margin-bottom: 12px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

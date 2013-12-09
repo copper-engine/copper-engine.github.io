@@ -1,0 +1,118 @@
+---
+layout: default
+title: COPPER - Features
+tabname: features
+---
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Why you should use COPPER</h1>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#productivity" data-toggle="tab">Productivity</a></li>
+            <li><a href="#threads" data-toggle="tab">Parallel threads</a></li>
+            <li><a href="#lightweight" data-toggle="tab">Light weight</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="productivity">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>100% Pure Java</h3>
+                        <ul>
+                            <li>You can exploit the complete range of Java features.</li>
+                            <li>You can use your favorite development environment.</li>
+                            <li>You can use Java tools for defining and editing workflows, for workflow definitions, for debugging and profiling, for test coverage analysis as well as for your teamwork support.</li>
+                            <li>You do not need to spend precious time on familiarising yourself with additional languages, notations, tools and runtimes, as you would if you wanted to use <span style="font-style: italic;">BPEL</span> or <span style="font-style: italic;">BPMN</span>, for example.</li>
+                            <li>You can supervise COPPER online with its vast JMX management and monitoring capabilities.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="heading-example">Workflow example</h5>
+                        {% highlight java %}
+public class PingWorkflow
+        extends PersistentWorkflow<PingData>
+{
+    private PingAdapter pingAdapter;
+
+    // The adapter is injected by the engine
+    // due to the AutoWire annotation
+    @AutoWire
+    public void setPingAdapter(PingAdapter pingAdapter) {
+        this.pingAdapter = pingAdapter;
+    }
+
+    @Override
+    public void main() throws InterruptException {
+        System.out.println("started");
+        // Asynchronous call of the ping service
+        String correlationId =
+               pingAdapter.ping(getData().pingMessage);
+        // Wait up to 60 seconds for the response
+        wait(WaitMode.ALL, 60000, correlationId);
+        // get the response from the engine
+        // using the correlationId
+        Response<String> response =
+                 getAndRemoveResponse(correlationId);
+        System.out.println("finished,
+            response="+response.getResponse());
+    }
+}
+{% endhighlight %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="threads">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Unlimited Number of Parallel Workflow Threads</h3>
+                        <ul>
+                            <li>COPPER provides the perfect support for an asynchronous processing of workflows by means of a Java notation.</li>
+                            <li>If you want to process service calls to external systems or to a database asynchronously, COPPER offers a
+                             sequential notation, which allows for asynchronous waiting without binding or blocking the current thread.See example on the right.</li>
+                            <li>While a workflow starts waiting, COPPER releases the current thread which then begins executing other workflow instances.
+                                As soon as the asynchronous response is received for the initial workflow, processing of this workflow instance continues using the next free thread.
+                                Thus, the number of workflow instances with asynchronous communication that can run in parallel is higher than the number
+                                of available operating system threads. It is possible for COPPER to process hundreds of thousands of workflow processes in parallel without facing thread count limitations.</li>
+                            <li><span style="font-style:italic">No queue overflows!</span> — as long as the data fits into the underlying database you can queue up as many processes as you want.</li>
+                            <li>COPPER supports early responses, too. Early responses are those kind of responses which arrive before <code>wait</code> is called.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="heading-example">Example</h5>
+                        {% highlight java %}
+String correlationId = pingAdapter.ping(getData().pingMessage);
+// Wait up to 60 seconds for the response
+wait(WaitMode.ALL, 60000, correlationId);
+// get the response from the engine
+// using the correlationId
+...
+{% endhighlight %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="lightweight">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Light-weight Solution</h3>
+                        <ul>
+                            <li>The COPPER core engine consists of less than 400 classes. Its JAR file size is less than 1 MB.</li>
+                            <li>The COPPER core engine has only a few mandatory dependencies, for example <span style="font-style: italic;">ASM</span>, <span style="font-style: italic;">slf4j</span> and some <span style="font-style: italic;">Apache Commons</span> libraries.</li>
+                            <li>COPPER requires only a handful of database tables for processing of persistent workflows.</li>
+                            <li>COPPER runs out-of-the-box with the following RDBMS: Oracle, MySQL, PostgreSQL, Apache DerbyDB.<br/>Support for any other database is easy to accomplish.</li>
+                            <li>You can use COPPER in <span style="font-style:italic">any</span> container, eg. Spring, Guice, Tomcat, JBoss, Webspere etc.</li>
+                            <li>Logging in COPPER uses slf4j, which enables seamless logging integration into your container/environment.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="hidden-xs" style="overflow: hidden">
+                            <img src="{{ site.baseurl}}/images/feather.jpg" width="600" height="450">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

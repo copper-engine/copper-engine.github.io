@@ -14,6 +14,6 @@ To test these webpages, first install Ruby, Bundler and Jekyll by following [the
 Then clone this project to your local folder and run
 
     $ cd <your-cloned-project-dir>
-    $ bundle exec jekyll serve --watch --baseurl ''
+    $ bundle exec jekyll serve --watch
 
 to serve the webpages locally on `http://localhost:4000/`. _(You might need to add `~/.gem/ruby/2.0.0/bin` to your PATH so that the `bundle` executable can be found.)_

@@ -5,7 +5,7 @@ This is the GitHub project for the GitHub Pages based website of the **[copper-e
 
 This website makes use of the [Jekyll templating engine](http://jekyllrb.com/) which is integrated into GitHub Pages. See [Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-with-pages#configuring-jekyll) for more details.
 
-Whenever you push something into this project, GitHub automatically runs Jekyll and serves the content on [copper-engine.github.io/copper-engine-website/](http://copper-engine.github.io/copper-engine-website/). Note that it may take up to 10 minutes until the new content will be available.
+Whenever you push something into this project, GitHub automatically runs Jekyll and serves the content on [copper-engine.github.io/](http://copper-engine.github.io/). Note that it may take up to 10 minutes until the new content will be available.
 
 ### Using Jekyll locally
 

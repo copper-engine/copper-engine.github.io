@@ -1,0 +1,23 @@
+---
+layout: default
+title: COPPER News
+tabname: news
+---
+
+<div class="container">
+
+    {% include blog-index-pagination.html %}
+
+    {% for post in paginator.posts %}
+        <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+
+        {% include blog-head.html entry=post %}
+
+        <div class="blog-entry">
+            {{ post.content }}
+        </div>
+    {% endfor %}
+
+    {% include blog-index-pagination.html %}
+
+</div>

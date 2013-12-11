@@ -39,6 +39,15 @@ body {
     margin: 20px 0 0 0;
 }
 
+a.anchor {
+    /* adjust anchors for fixed header */
+    /* see http://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header */
+    display: block;
+    visibility: hidden;
+    position: relative;
+    top: -60px;
+}
+
 #footer > .container {
     padding-left: 15px;
     padding-right: 15px;
@@ -64,4 +73,34 @@ code {
     letter-spacing: 1px;
     font-weight: bold;
     font-size: 12px;
+}
+
+.blog-head {
+    font-size: 12px;
+    color: #999;
+}
+
+.blog-head .author .name {
+    font-weight: bold;
+}
+
+.blog-entry {
+    margin: 20px 0 20px 0;
+}
+
+.blog-newsflash {
+    margin-top: 20px;
+}
+
+.blog-newsflash .date {
+    color: #999;
+    font-style: italic;
+}
+
+.blog-newsflash .first {
+    font-weight: bold;
+}
+
+.blog-newsflash .more {
+    font-style: italic;
 }

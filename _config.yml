@@ -1,6 +1,19 @@
 # Jekyll configuration
 # see http://jekyllrb.com/docs/configuration/
 
+# turn on GitHub flavored Markdown (see http://jekyllrb.com/docs/configuration/#kramdown)
+markdown: kramdown
+kramdown:
+  input: GFM
+
 # Jekyll excludes dot-files such as .gitignore oder .idea by default,
 # but we need to exclude some more files
 exclude: ['Gemfile*','*.iml','README.md']
+
+# use pretty url's for blog posts (see http://jekyllrb.com/docs/permalinks/)
+permalink: "/blog/:year-:month-:day/:title/"
+
+# paginate settings for the news/blog posts (see http://jekyllrb.com/docs/pagination/)
+# TODO: change this to 5 or 10 when we have more posts
+paginate: 3
+paginate_path: "/blog/page:num"

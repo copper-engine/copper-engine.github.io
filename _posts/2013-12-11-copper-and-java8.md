@@ -12,6 +12,6 @@ categories: development
 
 However, the ASM developers are already working on Java8 compatibility and [promise that it's ready with the next major release 5.0](http://asm.ow2.org/history.html). A beta version is already available, which we are testing right now.
 
-Thus, in short: you cannot use Java8 with COPPER right now. If you *really* want to use COPPER with Java 8, you can do so, but be *very careful* to compile all your persitent workflow classes with `--source 1.7 --target 1.7`. (All your other classes can be compiled without these options.) But that's probably not what you want, because you cannot use the new language features in your workflows, especially closures.
+Thus, in short: you cannot use Java8 with COPPER right now. If you *really* want to use COPPER with Java 8, you can do so, but be *very careful* to compile all your persistent workflow classes with `--source 1.7 --target 1.7`. (All your other classes can be compiled without these options.) But that's probably not what you want, because you cannot use the new language features in your workflows, especially closures.
 
 We will release a new COPPER version with Java 8 support as soon as ASM 5.0-stable hits the scene, so stay tuned!

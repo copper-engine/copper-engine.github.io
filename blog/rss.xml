@@ -1,0 +1,35 @@
+---
+# based on the Jekyll Template for RSS
+# see https://davecoyle.com/tech-notes/jekyll-templates-for-atom-rss/
+
+layout: nil
+---
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title>COPPER Workflow Engine News</title>
+    <link href="http://copper-engine.org/"/>
+    <link type="application/atom+xml" rel="self" href="http://copper-engine.org/blog/rss.xml"/>
+    <updated>{{ site.time | date_to_xmlschema }}</updated>
+    <id>http://copper-engine.org/</id>
+    <author>
+        <name>COPPER Workflow Engine Development Team</name>
+        <email>contact@copper-engine.org</email>
+    </author>
+
+    {% for post in site.posts %}
+    <entry>
+        <id>http://copper-engine.org{{ post.id }}</id>
+        <link type="text/html" rel="alternate" href="http://copper-engine.org{{ post.url }}"/>
+        <title>{{ post.title }}</title>
+        <published>{{ post.date | date_to_xmlschema }}</published>
+        <updated>{{ post.date | date_to_xmlschema }}</updated>
+        <author>
+            <name>COPPER Workflow Engine Development Team</name>
+            <uri>http://copper-engine.org/</uri>
+        </author>
+        <content type="html">{{ post.content | xml_escape }}</content>
+    </entry>
+    {% endfor %}
+
+</feed>

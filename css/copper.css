@@ -28,6 +28,17 @@ body {
     background-color: #f5f5f5;
 }
 
+/* Fixes for bootstrap default styles
+-------------------------------------------------- */
+
+.panel-primary .panel-heading a {
+    color: #eeeeee;
+}
+
+.panel-primary .panel-heading a:hover {
+    color: #ffffff;
+}
+
 /* Custom page CSS
 -------------------------------------------------- */
 

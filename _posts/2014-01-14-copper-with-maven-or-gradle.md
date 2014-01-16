@@ -3,6 +3,7 @@ layout: blog
 title: Using COPPER with Maven or Gradle
 author: Dirk
 categories: development
+tags: [ "Maven", "Gradle" ]
 ---
 
 Since [release 3.0]({% post_url 2014-01-14-copper-3.0-released %}) COPPER is available on the [Maven Central Repository](http://search.maven.org).

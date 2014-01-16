@@ -9,12 +9,12 @@ tabname: about
             <h1>What is COPPER</h1>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <p><span style="font-weight:bold">COPPER</span> stands for: <span style="font-weight:bold">CO</span>mmon <span style="font-weight:bold">P</span>ersistable <span style="font-weight:bold">P</span>rocess <span style="font-weight:bold">E</span>xcecution <span style="font-weight:bold">R</span>untime.</p>
                 <ul>
                     <li>COPPER is a high-performance Java-based workflow engine.</li>
-                    <li>In contrast to many other Java-based workflow engines, it is not only written in Java but also <span style="font-style:italic">uses</span> Java for workflow definitions. See the example on the right.</li>
-                    <li>You can dynamically modify workflows at runtime.</li>
+                    <li>In contrast to many other Java-based workflow engines, it is not only written in Java but also <span style="font-style:italic">uses</span> Java for workflow definitions. See the <a href="/features">features</a> for an example.</li>
+                    <li>You can dynamically modify workflows at runtime! As soon as you save the changed code, COPPER compiles it automatically and loads it.</li>
                     <li>You can implement both real-time tasks as well as persistent long-running tasks.</li>
                     <li>One of its key features is the asynchronous workflow processing that supports the processing of a large number of workflow threads in parallel without facing operating system thread count limitations.</li>
                     <li>With COPPER, you can easily implement high-performance transaction systems.</li>
@@ -23,43 +23,13 @@ tabname: about
                 </ul>
                 <p><a class="btn btn-default" href="/features/" role="button">More features &raquo;</a></p>
                 <h2>Who we are</h2>
-                <p></p><a style="float: right" href="http://www.scoop-software.de/"><img src="/images/logo-scoop.png" width="215" height="68" alt="SCOOP Logo"></a> The COPPER workflow engine is the long-time development effort of the german company <span style="font-weight:bold"><a href="http://www.scoop-software.de/">SCOOP Software GmbH</a></span>. We are a consulting and software company with a constant direction towards state-of-the-art technologies and methods. Our high performance systems are used in multiple medium sized and large enterprises in branches such as online retail, telecommunications, financial services, logistics and local government.</p>
+                <p></p><a style="float: left; margin-right: 20px;" href="http://www.scoop-software.de/"><img src="/images/logo-scoop.png" width="215" height="68" alt="SCOOP Logo"></a> The COPPER workflow engine is the long-time development effort of the german company <span style="font-weight:bold"><a href="http://www.scoop-software.de/">SCOOP Software GmbH</a></span>. We are a consulting and software company with a constant direction towards state-of-the-art technologies and methods. Our high performance systems are used in multiple medium sized and large enterprises in branches such as online retail, telecommunications, financial services, logistics and local government.</p>
                 <p>We are using COPPER in several business-critical 24/7 systems which are in use in the European telecommunications market. In 2012 we decided to make COPPER OpenSource, put it under Apache License 2.0 and hosted it on Google Code first. Later on we moved the code to <a href="https://github.com/copper-engine/copper-engine">GitHub</a>.</p>
                 <p>If you have any questions about COPPER and want to get further information, please visit <a href="/contact">our contact page</a>.</p>
             </div>
-            <div class="col-md-6">
-                <h5 class="heading-example">Workflow example</h5>
-
-                {% highlight java %}
-public class PingWorkflow
-        extends PersistentWorkflow<PingData>
-{
-    private PingAdapter pingAdapter;
-
-    // The adapter is injected by the engine
-    // due to the AutoWire annotation
-    @AutoWire
-    public void setPingAdapter(PingAdapter pingAdapter) {
-        this.pingAdapter = pingAdapter;
-    }
-
-    @Override
-    public void main() throws InterruptException {
-        System.out.println("started");
-        // Asynchronous call of the ping service
-        String correlationId =
-               pingAdapter.ping(getData().pingMessage);
-        // Wait up to 60 seconds for the response
-        wait(WaitMode.ALL, 60000, correlationId);
-        // get the response from the engine
-        // using the correlationId
-        Response<String> response =
-                 getAndRemoveResponse(correlationId);
-        System.out.println("finished,
-            response="+response.getResponse());
-    }
-}
-{% endhighlight %}
+            <div class="col-md-4">
+                <div><script type="text/javascript" src="http://www.ohloh.net/p/623299/widgets/project_basic_stats.js"></script></div>
+                <div><script type="text/javascript" src="http://www.ohloh.net/p/623299/widgets/project_factoids.js"></script></div>
             </div>
         </div>
     </div>

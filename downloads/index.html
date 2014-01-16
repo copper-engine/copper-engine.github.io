@@ -19,6 +19,26 @@ displayGitHubRibbon: true
                     You can download it <span style="font-weight:bold"><a href="https://github.com/copper-engine/copper-engine/releases/tag/3.0">here</a></span>.<br/>
                     See <a href="https://github.com/copper-engine/copper-engine/blob/3.0/WHATSNEW.txt">what's new</a>.</p>
 
+                <p>COPPER is on <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.copper-engine%22">Maven Central</a>, too. You may use the following to include the COPPER core workflow engine in your <span style="font-weight: bold">Maven</span> project:
+                {% highlight xml %}
+<dependency>
+    <groupId>org.copper-engine</groupId>
+    <artifactId>copper-coreengine</artifactId>
+    <version>3.0</version>
+</dependency>{% endhighlight %}
+                If you are using <span style="font-weight: bold">Gradle</span>, simply add the following to your <code>dependencies</code> section:
+                {% highlight groovy %} compile 'org.copper-engine:copper-coreengine:3.0' {% endhighlight %}
+                If you are using COPPER with Spring you also need to include <code>copper-spring</code>:
+                {% highlight xml %}
+<dependency>
+    <groupId>org.copper-engine</groupId>
+    <artifactId>copper-spring</artifactId>
+    <version>3.0</version>
+</dependency> {% endhighlight %}
+                and likewise for Gradle:
+                {% highlight groovy %} compile 'org.copper-engine:copper-spring:3.0' {% endhighlight %}
+                </p>
+
                 <h3>Development</h3>
 
                 <p>Currently, we're working on the <span style="font-weight:bold">master</span> branch on release <span style="font-weight:bold">3.1</span>.<br/>

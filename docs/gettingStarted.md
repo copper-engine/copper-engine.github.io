@@ -1,7 +1,7 @@
 ---
 layout: default
 title: COPPER - Getting Started
-tabname: docs
+tabname: markdown
 ---
 
 Getting started

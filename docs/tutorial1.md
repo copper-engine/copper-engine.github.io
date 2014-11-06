@@ -66,13 +66,13 @@ After maximum 5 sec you will see the additional log entry in the logout.
         (...)
 ```
 
-wait() can wait for one or mutliple corellationIds and continue, if one or all IDs are handled.
+wait() can wait for one or multiple corellationIds and continue, if one or all IDs are handled.
 A timeout (in ms) can be specified for the maximum waiting time.
 
-        wait(WaitMode.ONE, 5 * 60 * 60 * 1000, correlationId, correlationId2, correlationId3);
+        wait(WaitMode.FIRST, 5 * 60 * 60 * 1000, correlationId, correlationId2, correlationId3);
 
 If  `HelloWorldService.sendResponse(String correlationId, boolean success, String answer)` is called by the external system, 
-it informs the copper engine with the response.
+it informs the copper engine about the response and provides the response data.
 
 ```Java
     public void sendResponse(String correlationId, boolean success, String answer) {
@@ -84,7 +84,7 @@ it informs the copper engine with the response.
     }
 ```
 
-The workflow continues and can retrieve the response and handle it.
+The workflow continues and can retrieve the response data and handle it.
 
 ```Java
         final Response<HelloWorldResponse> response = getAndRemoveResponse(correlationId);
@@ -107,10 +107,9 @@ After completing the workflow the engine gets an acknowledge for the successful 
 
 New workflows have the following requirements:
 
-* the source code of the workflow needs to be found by the copper engine either in the classpath or in a specified source directory ("src/workflow/java")
-* only parts of the Java 7 syntax is supported.
+* the java source code of the workflow needs to be found by the copper engine either in the classpath or in a specified source directory ("src/workflow/java")
 * included Java fields needs to be serializable.
-* needs to extend org.copperengine.core.Workflow or org.copperengine.core.persistent.PersistentWorkflow
+* the workflow needs to extend org.copperengine.core.Workflow or org.copperengine.core.persistent.PersistentWorkflow depending on the used engine version.
 * include workflow logic in `public void main() throws Interrupt {}`
 * wait() stops the execution with correlationId and timeout
 * copper starts continuation with correlationID and workflow can get response data with getAndRemoveResponse(correlationId)
@@ -154,5 +153,18 @@ If you start HelloWorldTestApplication in an IDE with Debug Mode, you can set Br
 
 The complete configuration of the copper engine is inside TransientEngineFactory.java:
 
-* 
+The (transient) engine has many configurable components:
+* DependencyInjector
+* EarlyResponseContainer
+* EngineIdProvider
+* IdFactory
+* PoolManager
+* StatisticsCollector
+* TicketPoolManager
+* TimeoutManager
+* WfRepository
+
+
+
+<h4><a href="tutorial2">Proceed with part 2 of the tutorial: Orchestration Example</a></h4>
 

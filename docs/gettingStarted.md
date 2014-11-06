@@ -7,31 +7,34 @@ tabname: docs
 Getting started
 =================
 
-A quickstarter example project for cooper-engine.
+copper-starter ist a quick starter project for the cooper-engine. (https://github.com/copper-engine/copper-starter)
+We use this project to demonstrate the main features of copper.
 
 ### Overview
 
 copper provides a performant solution for the following business workflow:
 
-0. the application needs to handle many workflows in a performant way.
-1. the copper provides the workflow instance
+0. an application needs to handle many workflows in a performant way and integrates copper-engine
+1. the copper engine provides the workflow instance
 2. Each workflow sends requests to an external asynchronous adapter. 
 3. the adapter provides synchronous a correlationID for later references.
 4. After some time the adapter sends back the response data together with the correlationID
-5. The workflow continues execution and handles the response data.
+5. the copper-engine continues the execution of the corresponding workflow
+6. the workflow handles the response data.
 
 ![Overview](/images/gs-copper-overview.png)
+
+### Features 
 
 The following features of copper engine will be demonstrated in the copper-starter project:
 
 - copper is a workflow engine that provides unlimited "threads" 
 	- all threads will be serialized transient or persistent
 - workflow code is parsed, compiled and instrumented at runtime
-- workflows are coded in java with wait()-continuation breaks
-- workflows have typesafe RequestData and Response object.
+	- workflows can have multiple versions at the same time.
+	- workflows are coded in java with wait()-continuation breaks
+	- workflows have typesafe RequestData and Response objects.
 - There are limitations for the supported java syntax
-- workflows can be updates at runtime, and provide versioning support
-- workflows have name and version attributes to support old long running jobs
 - IDE Breakpoints in Workflow-files works fine for debugging
 - How to inject Services into workflow
 - How to configure the processing engine
@@ -84,5 +87,5 @@ copper-starter contains two examples:
     - persistent copper engine stores all threads in derby database
 
 
-<h3><a href="tutorial1.html">Start with Tutorial part 1 HelloWorld Example</a></h3>
-<h3><a href="tutorial1.html">Start with Tutorial part 2 Orchestration Example</a></h3>
+<h4><a href="tutorial1.html">Start with Tutorial part 1 HelloWorld Example</a></h4>
+<h4><a href="tutorial1.html">Start with Tutorial part 2 Orchestration Example</a></h4>

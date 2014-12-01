@@ -7,12 +7,12 @@ tabname: docs
 Getting started
 =================
 
-copper-starter ist a quick starter project for the cooper-engine. (https://github.com/copper-engine/copper-starter)
-We use this project to demonstrate the main features of copper.
+copper-starter ist a getting started project for the cooper-engine. (https://github.com/copper-engine/copper-starter)
+It demonstrates some main features of copper.
 
 ### Overview
 
-copper provides a performant solution for the following business workflow:
+This sample project provides a performant solution for the following business workflow:
 
 0. an application needs to handle many workflows in a performant way and integrates copper-engine
 1. the copper engine provides the workflow instance
@@ -23,21 +23,6 @@ copper provides a performant solution for the following business workflow:
 6. the workflow handles the response data.
 
 ![Overview](/images/gs-copper-overview.png)
-
-### Features 
-
-The following features of copper engine will be demonstrated in the copper-starter project:
-
-- copper is a workflow engine that provides unlimited "threads" 
-	- all threads will be serialized transient or persistent
-- workflow code is parsed, compiled and instrumented at runtime
-	- workflows can have multiple versions at the same time.
-	- workflows are coded in java with wait()-continuation breaks
-	- workflows have typesafe RequestData and Response objects.
-- There are limitations for the supported java syntax
-- IDE Breakpoints in Workflow-files works fine for debugging
-- How to inject Services into workflow
-- How to configure the processing engine
 
 ### Setup
 
@@ -53,6 +38,9 @@ git clone https://github.com/copper-engine/copper-starter.git
 cd copper-starter
 gradle assemble
 ```
+
+	Note: You can use ./gradlew or ./gradlew.bat instead of gradle if you don't have gradle already installed.
+
 
 ##### test run in eclipse
 
@@ -80,7 +68,7 @@ copper-starter contains two examples:
 - a very simple HelloWorld Workflow:
 	- send 5000 asyncronous "Hello World" request to a mocked "external" Adapter.
 	- receive 5000 answer call backs
-	- uses the transient copper-engine: all threads are stored in memory.
+	- uses the transient copper-engine: all workflow instances are stored in memory.
 
 - a more realistic orchestration example:
     - engine, sender and adapter are separated java programs

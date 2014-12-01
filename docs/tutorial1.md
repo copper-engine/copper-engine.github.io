@@ -16,10 +16,10 @@ What you need to know:
 
 - src/main/workflow/ contains source code for the workflow Java Files and is monitored for changes during execution.
 - each workflow sends request data to a mocked "external" adapter and gets a ticket correlationID.
-- the workflow execution stops and the java object is serialized and stored in memory.
+- the workflow execution stops and the java object is stored in memory.
 - The adapter responses by calling HelloWorldService with the correlationId and the response
 - HelloWorldService informs the copper engine.
-- the corresponding workflow is deserialized and the workflow continues.
+- the corresponding workflow is resumed.
 
 ![HelloWorldApplication Overview](/images/gs-copper1.png)
 
@@ -27,7 +27,7 @@ What you need to know:
 
 #### Step 1: copper provides "unlimited" threads
 
-Copper serializes each workflow and the thread is freed for other tasks. Copper can handle "unlimited" workflow threads.
+Copper can handle a lot of workflow threads.
 
 Increase the number of workflow thread to 100000. (HelloWorldTestApplication.java (line: 28)
 
@@ -62,14 +62,14 @@ After maximum 5 sec you will see the additional log entry in the logout.
         final String correlationId = HelloWorldAdapter.get().asyncSendHelloWorld(getData());
         logger.info(correlationId+ ": workflow    break: Hello World!");
 
-        wait(WaitMode.ALL, 5 * 60 * 60 * 1000, correlationId);
+        wait(WaitMode.ALL, 5 * 60 * 60 * 1000, correlationId); //timeout after 5 minutes.
         (...)
 ```
 
 wait() can wait for one or multiple corellationIds and continue, if one or all IDs are handled.
 A timeout (in ms) can be specified for the maximum waiting time.
 
-        wait(WaitMode.FIRST, 5 * 60 * 60 * 1000, correlationId, correlationId2, correlationId3);
+        wait(WaitMode.FIRST, 5 * 60 * 60 * 1000, correlationId, correlationId2, correlationId3); //timeout after 5 minutes.
 
 If  `HelloWorldService.sendResponse(String correlationId, boolean success, String answer)` is called by the external system, 
 it informs the copper engine about the response and provides the response data.
@@ -84,7 +84,7 @@ it informs the copper engine about the response and provides the response data.
     }
 ```
 
-The workflow continues and can retrieve the response data and handle it.
+The workflow continues, retrieves the response data and handles it.
 
 ```Java
         final Response<HelloWorldResponse> response = getAndRemoveResponse(correlationId);
@@ -107,13 +107,12 @@ After completing the workflow the engine gets an acknowledge for the successful 
 
 New workflows have the following requirements:
 
-* the java source code of the workflow needs to be found by the copper engine either in the classpath or in a specified source directory ("src/workflow/java")
+* the java source code of the workflow needs to be found by the copper engine in a specified source directory (e.g. "src/workflow/java")
 * included Java fields needs to be serializable.
 * the workflow needs to extend org.copperengine.core.Workflow or org.copperengine.core.persistent.PersistentWorkflow depending on the used engine version.
 * include workflow logic in `public void main() throws Interrupt {}`
 * wait() stops the execution with correlationId and timeout
 * copper starts continuation with correlationID and workflow can get response data with getAndRemoveResponse(correlationId)
-* each Workflow has a name and version annotation for reference in the engine.
 
 The workflow needs to be created by the engine with a name reference (and optional version)
 
@@ -125,7 +124,7 @@ HelloWorldTestApplication.java
 #### Step 5: WorkFlow with multiple versions
 
 For long running Workflows it might be needed to have the same workflow in mutliple versions.
-We want to change the business logik for new Workflow instances, but still running instances should still complete the workflow with the old business logik.
+We want to change the business logic for new workflow instances, but still running instances should still complete the workflow with the old business logik.
 
 For this each workflow has @WorkflowDescription annotation with version attributes.
 Per default the engine uses for new Workflow instances the newest version.
@@ -147,22 +146,22 @@ Per default the engine uses for new Workflow instances the newest version.
 
 #### Step 6: Debug WorkFlow in IDE
 
-If you start HelloWorldTestApplication in an IDE with Debug Mode, you can set Breakpoints inside the Workflow as usual.
+If you start HelloWorldTestApplication in an IDE with Debug Mode, you can set breakpoints in the Workflow as usual.
 
 #### Step 7: Configure the copper engine
 
 The complete configuration of the copper engine is inside TransientEngineFactory.java:
 
 The (transient) engine has many configurable components:
-* DependencyInjector
-* EarlyResponseContainer
-* EngineIdProvider
-* IdFactory
-* PoolManager
-* StatisticsCollector
-* TicketPoolManager
-* TimeoutManager
-* WfRepository
+* [DependencyInjector](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/DependencyInjector.java): manages dependencies inside the workflow java classes
+* [EarlyResponseContainer](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/tranzient/EarlyResponseContainer.java): how to handle async responses that comes early, before the corresponding wait() method in the workflow is called.
+* [EngineIdProvider](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/EngineIdProvider.java): advanced feature for persistent engines
+* [IdFactory](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/common/IdFactory.java): provides unique correlation IDs
+* [PoolManager](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/common/ProcessorPoolManager.java): handle Thread pools
+* [RuntimeStatisticsCollector](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/monitoring/RuntimeStatisticsCollector.java): provides runtime statistics
+* [TicketPoolManager](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/common/TicketPoolManager.java): provides overflow handling
+* [TimeoutManager](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/tranzient/TimeoutManager.java): provides timeout handling: send timeout response
+* [WorkflowRepository](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/common/WorkflowRepository.java): handles source code directory
 
 
 

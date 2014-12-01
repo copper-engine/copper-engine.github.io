@@ -15,12 +15,10 @@ a more realistic example with persistent engine
 
 What you need to know:
 
-- a local derby database is used to persist all workflows 
+- a local derby database is used to persist all workflow instances
 - the adapter, engine and sender are started in different VMs
 - Orchestration uses spring for Dependency Injection
 - some basic spring framework knowledge
-
-[picture]
 
 #### Step 1: run the orchestration example
 
@@ -67,5 +65,6 @@ Open org.copperengine.examples.orchestration.wf.ResetMailbox:
     
 
 Because the workflow is created by the engine, we need a mechanism to inject external services.
-Spring support is provided by "org.copperengine.spring.SpringDependencyInjector" 
+Spring support is provided by "org.copperengine.spring.SpringDependencyInjector", 
+but other [dependency injector implementations](https://github.com/copper-engine/copper-engine/blob/master/projects/copper-coreengine/src/main/java/org/copperengine/core/DependencyInjector.java) are also possible.
 

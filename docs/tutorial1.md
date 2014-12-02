@@ -62,14 +62,14 @@ After maximum 5 sec you will see the additional log entry in the console.
         final String correlationId = HelloWorldAdapter.get().asyncSendHelloWorld(getData());
         logger.info(correlationId+ ": workflow    break: Hello World!");
 
-        wait(WaitMode.ALL, 5 * 60 * 60 * 1000, correlationId); //timeout after 5 minutes.
+        wait(WaitMode.ALL, 5 * 60 * 1000, correlationId); //timeout after 5 minutes.
         (...)
 ```
 
 wait() can wait for one or multiple corellationIds and continue, if one or all IDs are handled.
 A timeout (in ms) can be specified for the maximum waiting time.
 
-        wait(WaitMode.FIRST, 5 * 60 * 60 * 1000, correlationId, correlationId2, correlationId3); //timeout after 5 minutes.
+        wait(WaitMode.FIRST, 5 * 60 * 1000, correlationId, correlationId2, correlationId3); //timeout after 5 minutes.
 
 If  `HelloWorldService.sendResponse(String correlationId, boolean success, String answer)` is called by the external system, 
 it informs the copper engine about the response and provides the response data.

@@ -52,7 +52,7 @@ During execution uncomment HelloWorldWorkFlow.java line: 38
 	logger.info(correlationId+ ": workflow   part one: Hello World!");
 
 
-After maximum 5 sec you will see the additional log entry in the logout.
+After maximum 5 sec you will see the additional log entry in the console.
 
 #### Step 3: workflow uses wait() to suspend execution
 

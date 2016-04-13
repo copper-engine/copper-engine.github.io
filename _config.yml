@@ -11,7 +11,7 @@ kramdown:
 exclude: ['Gemfile*','*.iml','README.md']
 
 # use pretty url's for blog posts (see http://jekyllrb.com/docs/permalinks/)
-permalink: "/blog/:year-:month-:day/:title/"
+permalink: "/blog/:year-:month-:day-/:title/"
 
 # paginate settings for the news/blog posts (see http://jekyllrb.com/docs/pagination/)
 # TODO: change this to 5 or 10 when we have more posts

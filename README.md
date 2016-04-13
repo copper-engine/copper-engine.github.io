@@ -3,13 +3,13 @@ copper-engine-website
 
 This is the GitHub project for the GitHub Pages based website of the **[copper-engine.org](http://copper-engine.org)** project.
 
-This website makes use of the [Jekyll templating engine](http://jekyllrb.com/) which is integrated into GitHub Pages. See [Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-with-pages#configuring-jekyll) for more details.
+This website makes use of the [Jekyll templating engine](http://jekyllrb.com/) which is integrated into GitHub Pages. See [Using Jekyll as a static site generator with GitHub Pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/) for more details.
 
 Whenever you push something into this project, GitHub automatically runs Jekyll and serves the content on [copper-engine.github.io/](http://copper-engine.github.io/). Note that it may take up to 10 minutes until the new content will be available.
 
 ### Using Jekyll locally
 
-To test these webpages, first install Ruby, Bundler and Jekyll by following [these instructions](https://help.github.com/articles/using-jekyll-with-pages#installing-jekyll).
+To test these webpages, first install Ruby, Bundler and Jekyll by following [these instructions](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/).
 
 Then clone this project to your local folder and run
 

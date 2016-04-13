@@ -28,10 +28,10 @@ This sample project provides a performant solution for the following business wo
 
 ##### Prerequisites
 
-- Java JDK 6,7 or 8 
+- Java JDK 7 or 8 
 - gradle 2.0+
 - git
-- console, eclipse or Intellij Idea
+- Console, Eclipse or Intellij Idea
 
 ```sh
 git clone https://github.com/copper-engine/copper-starter.git
@@ -75,5 +75,5 @@ copper-starter contains two examples:
     - persistent copper engine stores all threads in derby database
 
 
-<h4><a href="tutorial1.html">Start with Tutorial part 1 HelloWorld Example</a></h4>
-<h4><a href="tutorial2.html">Start with Tutorial part 2 Orchestration Example</a></h4>
+<h4><a href="tutorial1">Start with Tutorial part 1 HelloWorld Example</a></h4>
+<h4><a href="tutorial2">Start with Tutorial part 2 Orchestration Example</a></h4>

@@ -5,4 +5,4 @@ author: Matthias
 categories: documentation
 ---
 
-Our new COPPER 'Getting started' is now available. Check our [docs](/docs/gettingStarted).
+Our new COPPER 'Getting started' is now available. Check our [docs](/docs/getting-started).

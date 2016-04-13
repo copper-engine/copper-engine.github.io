@@ -2,7 +2,7 @@
 # based on the Jekyll Template for RSS
 # see https://davecoyle.com/tech-notes/jekyll-templates-for-atom-rss/
 
-layout: nil
+layout: null
 ---
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

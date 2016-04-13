@@ -47,7 +47,7 @@ public class PingWorkflow
     }
 
     @Override
-    public void main() throws InterruptException {
+    public void main() throws Interrupt {
         System.out.println("started");
         // Asynchronous call of the ping service
         String correlationId =
@@ -106,6 +106,7 @@ wait(WaitMode.ALL, 60000, correlationId);
                             <li>The COPPER core engine has only a few mandatory dependencies, for example <em>ASM</em>, <em>slf4j</em> and some <em>Apache Commons</em> libraries.</li>
                             <li>COPPER requires only a handful of database tables for processing of persistent workflows.</li>
                             <li>COPPER runs out-of-the-box with the following RDBMS: Oracle, MySQL, PostgreSQL, Apache DerbyDB.<br/>Support for any other database is easy to accomplish.</li>
+                            <li>COPPER runs out-of-the-box with the following NoSQL database: Apache Cassandra</li>
                             <li>You can use COPPER in <em>any</em> container, eg. Spring, Guice, Tomcat, JBoss, Websphere etc.</li>
                             <li>Logging in COPPER uses slf4j, which enables seamless logging integration into your container/environment.</li>
                         </ul>

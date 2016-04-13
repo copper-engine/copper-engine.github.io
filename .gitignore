@@ -2,3 +2,4 @@
 _site
 Gemfile.lock
 .idea/findbugs-idea.xml
+.bundle

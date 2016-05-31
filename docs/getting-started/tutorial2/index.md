@@ -26,7 +26,7 @@ Start the Engine "org.copperengine.examples.orchestration.OrchestrationEngine" i
 
 Start the (external) Service "org.copperengine.examples.orchestration.simulators.servers.ServiceSimulatorMain" in the IDE
     
-Send a test message to the engine with "org.copperengine.examples.orchestration.simulators.clients.OrchestrationServiceTestClient" and program arguments "http://localhost:9090/orchestration?wsdl 491716677889 sc00p"
+Send a test message to the engine with "org.copperengine.examples.orchestration.simulators.clients.OrchestrationServiceTestClient" and program arguments "http://localhost:9090/services/orchestration?wsdl 491716677889 sc00p"
     
 (Problem with running parallel gradle tasks.)
 

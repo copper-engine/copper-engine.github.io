@@ -70,7 +70,7 @@ but other [dependency injector implementations](https://github.com/copper-engine
 
 In this variant of the previous example we enable monitoring and use the monitoring GUI to inspect the workflows.
 
-##### Start the engine
+#### Start the engine
 
 Run `org.copperengine.examples.orchestration.enginemon.OrchestrationEngineWithMonitoring` in your IDE.  
 If you use Eclipse, you can simply launch the `OrchestrationEngineWithMonitoring` run configuration.
@@ -79,14 +79,14 @@ Alternatively, you can start the engine by executing the `runEngineWithMonitorin
 
 Consult the [monitoringContext.xml](https://github.com/copper-engine/copper-starter/blob/master/src/main/resources/orchestrationWithMonitoring/monitoringContext.xml) file to see how the monitoring capabilities are configured.
 
-##### Start the service
+#### Start the service
 
 Run `org.copperengine.examples.orchestration.simulators.servers.ServiceSimulatorMain` in your IDE.  
 If you use Eclipse, you can simply launch the `ServiceSimulatorMain` run configuration.
 
 Alternatively, you can start the service by executing the `runService` task in gradle.
 
-##### Start the monitoring GUI
+#### Start the monitoring GUI
 
 Run `org.copperengine.monitoring.client.main.MonitorMain` in your IDE with the following arguments:
 ```
@@ -97,7 +97,7 @@ Run `org.copperengine.monitoring.client.main.MonitorMain` in your IDE with the f
 
 If you use Eclipse, you can simply launch the `ServiceSimulatorMain` run configuration.
 
-##### Send test messages to the engine
+#### Send test messages to the engine
 
 You can choose between sending a single test message or a sequence of test messages to the engine.
 

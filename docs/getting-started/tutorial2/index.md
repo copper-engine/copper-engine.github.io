@@ -20,7 +20,7 @@ What you need to know:
 - Orchestration uses spring for Dependency Injection
 - some basic spring framework knowledge
 
-#### Step 1: run the orchestration example
+#### Run the orchestration example
 
 Start the Engine "org.copperengine.examples.orchestration.OrchestrationEngine" in the IDE
 
@@ -28,9 +28,7 @@ Start the (external) Service "org.copperengine.examples.orchestration.simulators
 
 Send a test message to the engine with "org.copperengine.examples.orchestration.simulators.clients.OrchestrationServiceTestClient" and program arguments "http://localhost:9090/services/orchestration?wsdl 491716677889 sc00p"
 
-(Problem with running parallel gradle tasks.)
-
-#### Step 2: configuration of the orchestration example
+#### Configuration of the orchestration example
 OrchestrationEngineContext.xml contains the complete configuration for the persistent copper engine.
 
     	<bean id="persistent.engine" class="org.copperengine.core.persistent.PersistentScottyEngine" scope="singleton" init-method="startup" destroy-method="shutdown">
@@ -46,7 +44,7 @@ OrchestrationEngineContext.xml contains the complete configuration for the persi
         	<property name="statisticsCollector" ref="statisticsCollector"/>
     	</bean>
 
-#### Step 3: Dependency Injection for the workflows
+#### Dependency Injection for the workflows
 The spring configuration is also needed to inject external services into the workflow file:
 Open org.copperengine.examples.orchestration.wf.ResetMailbox:
 

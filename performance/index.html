@@ -1,0 +1,83 @@
+---
+layout: default
+title: COPPER - Performance test
+tabname: performance
+displayGitHubRibbon: true
+---
+
+    <div class="container">
+
+        <h1>COPPER Performance test</h1>
+
+		<p>
+		COPPER workflows are 100% pure Java so there is no performance penalty when processing data or calling partner systems in comparison to plain Java because it IS just Java.
+		COPPER simply offers a runtime environment with processing queues, processor threads and a model for handling asynchronous responses efficiently.
+		Also, in a persistent engine, COPPER offers crash safety, i.e. if the hosting server crashes, e.g. due to a power failure, the engine resumes the
+		previously running workflow instances at their last checkpoint. COPPER Checkpoints are written whenever a workflow executes <code>Workflow.savepoint</code> or <code>Workflow.wait</code>.
+		<code>Workflow.savepoint</code> simply persists the current state of the workflow instance to the underlying database and continues later on.
+		<code>Workflow.wait</code> asynchronously waits for a response, e.g. when calling an asynchronous service of partner system X that returns a correlationId 'cid' for the final response,
+		it's good practice in COPPER to wait for this response asynchronously using <code>Workflow.wait(WaitMode.FIRST,0,cid)</code>. <code>Workflow.wait(...)</code> writes a checkpoint and registers the
+		workflow instance for waiting for a response with a particular correlationId. As soon as the response arrives (using "engine.notify(...)</code>) the workflow instance is resumed and
+		the response is made available in it.
+		</p>
+
+		</p>
+		So when we are talking about performance in COPPER there are two separate concerns:
+		<ul>
+			<li>Procssing performance</li>
+			<li>Database performance</li>
+		</ul>
+		</p>
+
+		<h2>Procssing performance</h2>
+		As stated before, workflows are written in Java which is processed by the underlying JVM, which is proven to be fast.
+		The runtime environment is mostly using standard Java technologies from the java.util.concurrent package or simply <code>synchronized</code> and <code>Object.wait/notify<code>, so from our point of view
+		there is no need to prove that this is fast.
+
+		<h2>Database performance</h2>
+		Most COPPER users are using a persistent engine, because they want their workflow instances to survive crashes, downtimes and restarts.
+		So, the two major questions about COPPER database performance are
+		<ul>
+			<li>What is the latency to write a checkpoint, e.g using <code>Workflow.savepoint<code>?</li>
+			<li>What is the maximum number of checkpoint per second a system can handle, in other words what is the maximum throughput?</li>
+		</ul>
+
+		To answer these questions, we have introduced an official COPPER performance test suite.
+		This suite offers two different performance tests:
+
+		<h3>Latency</h3>
+		<p>
+		This test measures the average latency for executing a checkpoint in an otherwise idle system.
+		To do so, the test executes workflow
+		<a href="https://github.com/copper-engine/copper-engine/blob/master/projects/copper-performance-test/src/main/java/org/copperengine/performancetest/workflows/SavepointPerfTestWorkflow.java">SavepointPerfTestWorkflow</a>
+		that invokes <code>Workflow.savepoint()</code> ten times, measuring the latency each time.
+		The workflow is started several times (50 times by default) and the averagy latency time if all executions is measured.
+		</p>
+
+		<h3>Throughput</h3>
+		<p>
+		This test measures the average number of checkpoins (using Workflow.wait/Engine.notify) a system can handle as follows:
+		It starts a large number of
+		<a href="https://github.com/copper-engine/copper-engine/blob/master/projects/copper-performance-test/src/main/java/org/copperengine/performancetest/workflows/WaitNotifyPerfTestWorkflow.java">WaitNotifyPerfTestWorkflow</a>
+		workflows
+		and measures the time until the engine has completed their execution.
+		Each of the WaitNotifyPerfTestWorkflow workflows simulates the communication with an external partner system by calling an
+		<a href="https://github.com/copper-engine/copper-engine/blob/master/projects/copper-performance-test/src/main/java/org/copperengine/performancetest/impl/MockAdapter.java">adapter mock</a>
+		ten times. Each time its waiting for the response using <code>Workflow.wait</code>, so the workflow instances' state is persisted for ten times (plus one time when the initial workflow instance
+		is enqueued at the beginning).
+		At the end of the test, the average number of wait/notify cycles (checkpoints) is processed an printed on System.out.
+		</p>
+
+		<p>
+		Executing the performance test is quite simple - its just an executable jarfile containing everything you need.
+		It can handle all currently supported database systems, which are Apache Cassandra, Oracle, MySQL, Postgres, H2 and Derby.
+		There are various configuration parameters available for the test - see its usage.
+		The test and a description how to start it can be found here
+		<a href="https://github.com/copper-engine/copper-engine/blob/master/projects/copper-performance-test/PERFORMANCE_TEST_HOWTO.MD">PERFORMANCE_TEST_HOWTO</a>
+		</p>
+
+		<p>
+		We will publish the results of some performance tests later on this site.
+		</p>
+
+    </div>

@@ -1,0 +1,26 @@
+2016.06.17 08:50:53,141 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - Configuration parameters:
+2016.06.17 08:50:53,141 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - throughput.numberOfWfI=50000
+2016.06.17 08:50:53,141 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - throughput.dataSize=50
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - throughput.numberOfInsertThreads=32
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - throughput.batchSize=1
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - throughput.numberOfExtraProcPools=2
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - procPool.numberOfThreads=32
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - procPool.dequeueBulkSize=20
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - mockAdapter.numberOfThreads=32
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - compression=false
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - cassandra.hosts=nuc1.scoop-gmbh.de,nuc2.scoop-gmbh.de
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - cassandra.port=9042
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - cassandra.keyspace=copper
+2016.06.17 08:50:53,142 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - Starting throughput performance test with 50000 workflow instances and data size 50 chars ...
+2016.06.17 08:51:03,740 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - Workflow instances started, waiting...
+2016.06.17 08:51:37,272 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - Finished performance test with 50000 workflow instances in 44130 msec ==> 11330 wait/notify cycles per second
+2016.06.17 08:51:42,278 INFO  [main] org.copperengine.performancetest.main.ThroughputPerformanceTest [] - statistics:
+ear.delete............................................. #exec=    38; #elements=    38; avgCount=     1; avgTime/Element=     4,50750 msec; avgTime/Exec=     4,50750 msec
+ear.insert............................................. #exec=    38; #elements=    38; avgCount=     1; avgTime/Element=     4,19039 msec; avgTime/Exec=     4,19039 msec
+ear.read............................................... #exec=499962; #elements=499962; avgCount=     1; avgTime/Element=     2,72913 msec; avgTime/Exec=     2,72913 msec
+perftest.WaitNotifyPerfTestWorkflow.ExecutionTime...... #exec= 50000; #elements= 50000; avgCount=     1; avgTime/Element= 34753,45662 msec; avgTime/Exec= 34753,45662 msec
+storage.init........................................... #exec=     1; #elements=   504; avgCount=   504; avgTime/Element=     0,74008 msec; avgTime/Exec=   373,00000 msec
+wfi.delete............................................. #exec= 50000; #elements= 50000; avgCount=     1; avgTime/Element=     1,85307 msec; avgTime/Exec=     1,85307 msec
+wfi.update.nowait...................................... #exec= 50000; #elements= 50000; avgCount=     1; avgTime/Element=     3,26546 msec; avgTime/Exec=     3,26546 msec
+wfi.update.wait........................................ #exec=1000000; #elements=1000000; avgCount=     1; avgTime/Element=     2,55632 msec; avgTime/Exec=     2,55632 msec
+wfii.ins............................................... #exec= 50000; #elements= 50000; avgCount=     1; avgTime/Element=     3,36707 msec; avgTime/Exec=     3,36707 msec

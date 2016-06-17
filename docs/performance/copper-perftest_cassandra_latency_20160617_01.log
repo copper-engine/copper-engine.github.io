@@ -1,0 +1,22 @@
+2016.06.17 08:48:45,135 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - Configuration parameters:
+2016.06.17 08:48:45,139 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - latency.numberOfWfI=50
+2016.06.17 08:48:45,140 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - latency.dataSize=1000
+2016.06.17 08:48:45,140 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - procPool.numberOfThreads=16
+2016.06.17 08:48:45,140 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - procPool.dequeueBulkSize=2000
+2016.06.17 08:48:45,141 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - mockAdapter.numberOfThreads=16
+2016.06.17 08:48:45,141 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - compression=true
+2016.06.17 08:48:45,141 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - cassandra.hosts=nuc1.scoop-gmbh.de,nuc2.scoop-gmbh.de
+2016.06.17 08:48:45,141 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - cassandra.port=9042
+2016.06.17 08:48:45,142 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - cassandra.keyspace=copper
+2016.06.17 08:48:45,142 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - Starting latency performance test with 50 workflow instances and data size 1000 chars ...
+2016.06.17 08:48:50,260 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - Finished performance test with 50 workflow instances in 5117 msec, avg latency is 4.175 msec
+2016.06.17 08:48:55,266 INFO  [main] org.copperengine.performancetest.main.LatencyPerformanceTest [] - statistics:
+ear.delete............................................. #exec=   500; #elements=   500; avgCount=     1; avgTime/Element=     0,95963 msec; avgTime/Exec=     0,95963 msec
+ear.insert............................................. #exec=   500; #elements=   500; avgCount=     1; avgTime/Element=     1,06242 msec; avgTime/Exec=     1,06242 msec
+perftest.SavepointPerfTestWorkflow.ExecutionTime....... #exec=    50; #elements=    50; avgCount=     1; avgTime/Element=    48,20000 msec; avgTime/Exec=    48,20000 msec
+savepoint.latency...................................... #exec=   500; #elements=   500; avgCount=     1; avgTime/Element=     4,17550 msec; avgTime/Exec=     4,17550 msec
+storage.init........................................... #exec=     1; #elements=     0; avgCount=     0; avgTime/Element=     0,00000 msec; avgTime/Exec=    74,00000 msec
+wfi.delete............................................. #exec=    50; #elements=    50; avgCount=     1; avgTime/Element=     0,97140 msec; avgTime/Exec=     0,97140 msec
+wfi.update.nowait...................................... #exec=    50; #elements=    50; avgCount=     1; avgTime/Element=     1,25124 msec; avgTime/Exec=     1,25124 msec
+wfi.update.wait........................................ #exec=  1000; #elements=  1000; avgCount=     1; avgTime/Element=     1,08928 msec; avgTime/Exec=     1,08928 msec
+wfii.ins............................................... #exec=    50; #elements=    50; avgCount=     1; avgTime/Element=     1,40328 msec; avgTime/Exec=     1,40328 msec

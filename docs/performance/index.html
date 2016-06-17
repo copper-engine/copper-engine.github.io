@@ -68,6 +68,7 @@ displayGitHubRibbon: true
 		At the end of the test, the average number of wait/notify cycles (checkpoints) is processed an printed on System.out.
 		</p>
 
+		<h2>Running the Performance Test</h2>
 		<p>
 		Executing the performance test is quite simple - its just an executable jarfile containing everything you need.
 		It can handle all currently supported database systems, which are Apache Cassandra, Oracle, MySQL, Postgres, H2 and Derby.
@@ -76,8 +77,43 @@ displayGitHubRibbon: true
 		<a href="https://github.com/copper-engine/copper-engine/blob/master/projects/copper-performance-test/PERFORMANCE_TEST_HOWTO.MD">PERFORMANCE_TEST_HOWTO</a>
 		</p>
 
+		<h2>Performance Test Results</h2>
+		<h3>COPPER 4.1.2-SNAPSHOT running on a small Apache Cassandra 2.1 cluster</h3>
+		<h4>Application Server</h4>
 		<p>
-		We will publish the results of some performance tests later on this site.
+		<ul>
+			<li>Intel(R) Xeon(R) CPU X5570  @ 2.93GHz, 16 cores</li>
+			<li>48 GB RAM</li>
+			<li>CentOS release 5.11 (Final)</li>
+			<li>Java(TM) SE Runtime Environment (build 1.8.0_77-b03)</li>
+		</ul>
 		</p>
+		<h4>Database</h4>
+		<p>
+		<ul>
+			<li>Apache Cassandra 2.1.11.872 deployed on 6 nodes, each running on</li>
+			<ul>
+				<li>Intel NUC D54250WYK</li>
+				<li>Intel(R) Core(TM) i5-4250U CPU @ 1.30GHz, 4 cores</li>
+				<li>16 GB RAM</li>
+				<li>256 SSD, Plextor PX-256M5M</li>
+			</ul>
+			<li>Connected via Gigabit Ethernet</li>
+		</ul>
+		</p>
+		<h4>Latency Test</h4>
+		<p>
+		Finished performance test with 50 workflow instances in 5117 msec, <strong>avg latency is 4.175 msec</strong>
+		<br/>
+		See corresponding <strong><a href="copper-perftest_cassandra_latency_20160617_01.log">Logfile</a></strong>, containing all used parameters.
+		</p>
+		<h4>Throughput Test</h4>
+		<p>
+		Finished performance test with 50000 workflow instances in 44130 msec ==> <strong>11330 wait/notify cycles per second</strong>
+		<br/>
+		See corresponding <strong><a href="copper-perftest_cassandra_throughput_20160617.log">Logfile</a></strong>, containing all used parameters.
+		</p>
+
+
 
     </div>

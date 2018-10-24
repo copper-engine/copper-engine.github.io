@@ -28,7 +28,7 @@ This sample project provides a performant solution for the following business wo
 
 ##### Prerequisites
 
-- Java JDK as defined on <a href="../../"/>home page</a>
+- Java JDK as defined on <a href="../../">home page</a>
 - gradle 2.0+
 - git
 - Console, Eclipse or Intellij Idea
